@@ -1,6 +1,6 @@
 # This a template that can be used as a base to run your own cluster controller manager in openshift, all you need is to:
-# - replace the values between {{ and }} with your own ones
-# - specify the command to startup the CCM in your container
+# - replace values between {{ and }} with your own ones
+# - specify a command to startup the CCM in your container
 # - define and mount extra volumes if needed
 # This example defines the CCM as a Deployment, but a DaemonSet is also possible as long as Pod's template stays the same.
 kind: Deployment
