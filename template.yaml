@@ -68,7 +68,7 @@ spec:
             - name: trusted-ca
               mountPath: /etc/pki/ca-trust/extracted/pem
               readOnly: true
-            # mount extra volumes
+            # mount extra volumes if needed
       volumes:
         - name: host-etc-kube
           hostPath:
@@ -80,4 +80,4 @@ spec:
             items:
               - key: ca-bundle.crt
                 path: tls-ca-bundle.pem
-        # add extra volumes
+        # add extra volumes if needed
