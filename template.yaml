@@ -2,7 +2,7 @@
 # - replace the values between {{ and }} with your own ones
 # - specify the command to startup the CCM in your container
 # - define and mount extra volumes if needed
-# This example defines the CCM as a Deployment, but a DaemonSet is also possible as long as the Pod's template stays the same.
+# This example defines the CCM as a Deployment, but a DaemonSet is also possible as long as Pod's template stays the same.
 kind: Deployment
 apiVersion: apps/v1
 metadata:
