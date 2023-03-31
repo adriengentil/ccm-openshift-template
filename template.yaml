@@ -2,7 +2,7 @@
 # - replace values between {{ and }} with your own ones
 # - specify a command to startup the CCM in your container
 # - define and mount extra volumes if needed
-# This example defines the CCM as a Deployment, but a DaemonSet is also possible as long as Pod's template stays the same.
+# This example defines the CCM as a Deployment, but a DaemonSet is also possible as long as Pod's template is defined in the same way.
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -57,7 +57,15 @@ spec:
           image: {{ cloud controller image URI }} # replace me
           imagePullPolicy: "IfNotPresent"
           command:
-          - # launch cloud controller manager binary
+          - /bin/bash
+          - -c
+          - |
+            #!/bin/bash
+            set -o allexport
+            if [[ -f /etc/kubernetes/apiserver-url.env ]]; then
+              source /etc/kubernetes/apiserver-url.env
+            fi
+            exec {{ cloud controller binary }} # replace me
           ports:
           - containerPort: 10258
             name: https
